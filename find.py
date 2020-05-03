@@ -36,10 +36,10 @@ for chunk in doc.noun_chunks: #first pass to identify all places for comma
             final_two.pop(0) #either dummy or extra word in list of nouns
             bar = 2
 
-elif bar == 2: #this means we have gotten to the end of a sequance of conjs we need to check here for comma and restore
-    oxfords.append(final_two[:])
-    final_two = []
-    bar = 0
+    elif bar == 2: #this means we have gotten to the end of a sequance of conjs we need to check here for comma and restore
+        oxfords.append(final_two[:])
+        final_two = []
+        bar = 0
     
     elif bar == 1:
         final_two = []
