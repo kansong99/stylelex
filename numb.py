@@ -1,8 +1,8 @@
 import spacy
 
-nlp = spacy.load("en_core_web_lg")
+nlp = spacy.load("en_core_web_md")
 
-text = ("There are 200,156,300 dogs")
+text = ("Sam is celebrating his twenty-fourth birthday.")
 
 
 bigNums = ['hundred', 'thousand', 'million', 'billion', 'trillion']
@@ -54,6 +54,11 @@ for ent in doc.ents:
 			elif first.isnumeric() and ent.label_ is 'DATE':
 				print("Consider rephrasing sentence so it does not start with date")
 
+		elif ent.label_ is 'DATE' and ('year' in word and 'old' in word): #the assumption being this is an age
+			if text[ent.start_char].isnumeric() is False:
+				print("write age as numeral")
+		elif ent.label_ is 'DATE' and (word[0] in {"\'", "1", "2"} and word[-1] == "s"): #this suggests we are working with decade
+			print("spell out decades, e.g nineteen-sixties not '60s") 
 		elif ent.label_ in {'MONEY', 'CARDINAL'}: #Applying the rules for money
 			if "dollars" in ent.text: #I had to account for this due to negligence, effectively removing dollars
 				if ent.text[len(ent.text) - 8] == ' ':
@@ -65,7 +70,9 @@ for ent in doc.ents:
 					word = ent.text[:len(ent.text) - 7]
 					ending = word[len(word) - 2:]
 			if first.isnumeric() and last.isnumeric(): #this means word is a number, should be greater than 100 or decimal
-				if ',' in word and len(word) > 3 or '.' in word or (int(word) >= 100 and ending != '00'): #This is good and means we should use $
+				if word == '100':
+					print("spell out words less than or equal to 100")
+				elif ',' in word and len(word) > 3 or '.' in word or (int(word) >= 100 and ending != '00'): #This is good and means we should use $
 					if ent.label_ == 'MONEY' and hasSign(text, startCheck) is False:
 						print("You should use $ when money is numeral")
 				elif ending == '00':
@@ -77,7 +84,7 @@ for ent in doc.ents:
 					if ent.label_ == 'MONEY' and hasSign(text, startCheck):
 						print("spell out numbers less than 100 and use dollars instead of $")
 					else:
-						print("spell out numbers less than 100")
+						print("spell out numbers less than or equal to 100")
 			elif first.isnumeric(): #they used number to start then spellled out rest, 27 hundred
 				if word[-2:] not in {'on', 'nd', 'ed'}: #number ends in thousand, million, hundred, etc... 
 					if ent.label_ == 'MONEY' and hasSign(text, startCheck): #if ending indicates text should be written and they used $
