@@ -19,3 +19,6 @@ for ent in doc.ents:
 				print("Spell states out in full.")
 	run += 1
 	prev = ent.label_
+
+
+	### Consider adding comma check after states, perhaps making it a preference. ###
