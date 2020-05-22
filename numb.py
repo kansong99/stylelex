@@ -2,7 +2,18 @@ import spacy
 
 nlp = spacy.load("en_core_web_md")
 
-text = ("Sam is celebrating his twenty-fourth birthday.")
+text = ("State Rep. John Hampton (D-Simsbury) has again been recognized for voting\
+	on every bill that came before the General Assembly, achieving the milestone in\
+	 the last legislative session. 2019 was the third consecutive year that Hampton compiled\
+	 a perfect voting record in the legislature. ”I  am very proud of my voting record in Hartford\
+	  because that’s what  Simsbury residents expect from their state representative,” Hampton says.\
+	  “I was elected to be Simsbury’s voice at the Capitol and I  take the responsibility quite seriously.\
+	   I will continue to work diligently for my district [this] year and beyond.”\
+	   The clerk of the House of Representatives announces lawmakers’ voting records each year.\
+	    Hampton was present for all 392 votes in the 2019 General Assembly, according to the House clerk.\
+	    First elected in 2012, Hampton is in his fourth term representing the 16th House Assembly District.\
+	     He is vice-chair of the Aging Committee and also sits on the Commerce and Children committees.\
+	      In addition to his committee assignments, he is the majority whip at large.")
 
 
 bigNums = ['hundred', 'thousand', 'million', 'billion', 'trillion']
@@ -45,10 +56,10 @@ for ent in doc.ents:
 	if word[0] == '$': #make it so that $ does not mess with things
 		word = word[1:]
 		first = word[0]
-	if ent.label_ is 'CARDINAL' or ent.label_ is 'MONEY' or ent.label_ is 'QUANTITY' or ent.label_ is 'DATE' or ent.label_ is 'PERCENT':
+	if ent.label_ == 'CARDINAL' or ent.label_ == 'MONEY' or ent.label_ is 'QUANTITY' or ent.label_ is 'DATE' or ent.label_ is 'PERCENT':
 		startCheck = ent.start_char #check if we are starting a sentence.
 		ending = text[-2:] #check to validate last two chars are not 00
-		if ((startCheck > 3) and (text[startCheck - 2: startCheck] is '. ' or text[startCheck - 3: startCheck] is '.  ')) or startCheck is 0: #starts sentence
+		if ((startCheck > 3) and (text[startCheck - 2: startCheck] == '. ' or text[startCheck - 3: startCheck] == '.  ')) or startCheck == 0: #starts sentence
 			if first.isnumeric() and ent.label_ is not 'DATE':
 				print("spell out numbers when they start sentence")
 			elif first.isnumeric() and ent.label_ is 'DATE':
