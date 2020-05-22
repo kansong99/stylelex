@@ -2,21 +2,29 @@ import spacy
 
 nlp = spacy.load("en_core_web_sm")
 
-def oxfords(str):
+def oxfords(str, option):
 
-    # "He wants to buy red apples, green grapes, and yellow bananas. I like Jill, Jane, and Mary."
     doc = nlp(str)
     noun_count = 0;
     errors = [];
     for chunk in doc.noun_chunks:
         if chunk.root.dep_ == 'conj':
             noun_count = noun_count + 1
-            comma_index = chunk[0].i - 2
+            token_index = chunk[0].i - 2
+            char_index = chunk[0].idx
+            while str[char_index] != ",":
+                char_index = char_index - 1;
         else:
             if noun_count > 1:
-                errors.append(comma_index)
+                if option == False and doc[token_index].text == ",":
+                    errors.append(char_index)
+                if option == True and doc[token_index].text != ",":
+                    errors.append(char_index)
                 noun_count = 0
     if noun_count > 1:
-        errors.append(comma_index)
+            if option == False and doc[token_index].text == ",":
+                errors.append(char_index)
+            if option == True and doc[token_index].text != ",":
+                errors.append(char_index)
 
     return errors

@@ -4,6 +4,14 @@
 <h3>The solution:</h3>
 
 {% for i in range(length) %}
-    <p> oxford comma expected at position - {{solution[i]}} </p>
+<p>{{message}}{{solution[i]}}</p>
 {% endfor %}
-    
+
+
+{% for i in range(words) %}
+    {% if i in solution %}
+        <span><mark>{{article[i]}}</mark></span>
+    {% else %}
+        <span>{{article[i]}}</span>
+    {% endif %}
+{% endfor %}

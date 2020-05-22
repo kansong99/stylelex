@@ -52,12 +52,21 @@ def solution():
     """Renders the solution page."""
     if request.method == "POST":
         article = request.form["art"]
-        soln = module1.oxfords(article)
-        length = len(soln)
+        if request.form["oxfords"] == "no":
+            solution = module1.oxfords(article, False)
+            msg = "Remove Oxford comma at position -" 
+        else:
+            request.form["oxfords"] == "yes"
+            solution = module1.oxfords(article, True)
+            msg = "Oxford comma expected at position -"
+        length = len(solution)
+        words = len(article)
     return render_template(
         'solution.html',
-        solution=soln,
+        solution=solution,
         length=length,
+        article=article,
+        words=words,
         year=datetime.now().year,
-        message='Your application description page.'
+        message=msg
     )
