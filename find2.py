@@ -1,7 +1,7 @@
 import spacy
+from links import *
 
-nlp = spacy.load("en_core_web_sm")
-doc = nlp("He wants to buy red apples, green grapes, and yellow bananas. I like Jill, Jane, and Mary.")
+
 
 noun_count = 0;
 for chunk in doc.noun_chunks:
@@ -11,6 +11,7 @@ for chunk in doc.noun_chunks:
   else:
     if noun_count > 1:
       print ("oxford comma at position", comma_index)
+      llist.append
       noun_count = 0
 if noun_count > 1:
     print ("oxford comma at position", comma_index)
