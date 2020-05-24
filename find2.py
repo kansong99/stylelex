@@ -7,11 +7,12 @@ noun_count = 0;
 for chunk in doc.noun_chunks:
   if chunk.root.dep_ == 'conj':
     noun_count = noun_count + 1
-    comma_index = chunk[0].i - 2
+    comma_index = chunk.start_char - 6
   else:
     if noun_count > 1:
-      print ("oxford comma at position", comma_index)
-      llist.insert(comma_index)
+      llist.insert(comma_index, 1)
       noun_count = 0
 if noun_count > 1:
-    print ("oxford comma at position", comma_index)
+    llist.insert(comma_index, 1)
+
+llist.lprint()
