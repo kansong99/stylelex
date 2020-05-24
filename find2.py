@@ -11,7 +11,7 @@ for chunk in doc.noun_chunks:
   else:
     if noun_count > 1:
       print ("oxford comma at position", comma_index)
-      llist.append
+      llist.insert(comma_index)
       noun_count = 0
 if noun_count > 1:
     print ("oxford comma at position", comma_index)

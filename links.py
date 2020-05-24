@@ -4,14 +4,14 @@ nlp = spacy.load("en_core_web_sm")
 text = ("He wants to buy red apples, green grapes, and yellow bananas. I like Jill, Jane, and Mary.")
 doc = nlp(text)
 
-
+perrors = {1: "oxford comma at position",  }
 
 class Node:
-	def __init__(self, text):
-		self.text = text
+	def __init__(self, leng):
 		self.next = None
-		self.length = len(text)
 		self.error = False #to tell for printing whether text is error or correct
+		self.start = 0 #initial string
+		self.end = leng #last string
 
 
 class LinkedList:
@@ -24,7 +24,7 @@ class LinkedList:
 
 
 
-	def insert(self, node, value): #add error suggestion to linked list. will NEVER be head
+	def insert(self, index, 1): #add error suggestion to linked list. will NEVER be head
 		current = self.head
 		while current.next:
 			current = current.next
