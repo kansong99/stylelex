@@ -5,7 +5,7 @@ text = ("He wants to buy red apples, green grapes, and yellow bananas. I like Ji
 doc = nlp(text)
 
 #A dictionary of all the errors contained throughout all the files
-perrors = {1: "oxford comma present or not here ->",  }
+perrors = {1: " (oxford comma present or not here ->)",  }
 
 class Node:
 	def __init__(self, start, end, error):
@@ -25,7 +25,7 @@ class LinkedList:
 	def insert(self, index, ecode): #add error suggestion to linked list. will NEVER be head
 		prev = self.head
 		current = self.head.next
-		while index < current.start or current.error != 0: #while you are at wrong index or at error node
+		while index > current.end or current.error != 0: #while you are at wrong index or at error node
 			current = current.next
 			prev = prev.next
 		enode = Node(0, 0, ecode)
