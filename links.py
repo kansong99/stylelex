@@ -5,7 +5,7 @@ text = ("He wants to buy red apples, green grapes, and yellow bananas. I like Ji
 doc = nlp(text)
 
 #A dictionary of all the errors contained throughout all the files
-perrors = {1: " (oxford comma present or not here ->)",  }
+perrors = {1: " (oxford comma present or not here) ->", 2: "(spell out numbers less than or equal to 100)->" }
 
 class Node:
 	def __init__(self, start, end, error):

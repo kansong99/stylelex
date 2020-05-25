@@ -77,7 +77,7 @@ def numb_func():
 						if ent.label_ == 'MONEY' and hasSign(text, startCheck):
 							print("spell out numbers less than 100 and use dollars instead of $")
 						else:
-							print("spell out numbers less than or equal to 100")
+							llist.insert(ent.start_char, 2)
 				elif first.isnumeric(): #they used number to start then spellled out rest, 27 hundred
 					if word[-2:] not in {'on', 'nd', 'ed'}: #number ends in thousand, million, hundred, etc... 
 						if ent.label_ == 'MONEY' and hasSign(text, startCheck): #if ending indicates text should be written and they used $
