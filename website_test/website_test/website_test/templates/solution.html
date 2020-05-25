@@ -3,15 +3,22 @@
 <h1>This is the solution page</h1>
 <h3>The solution:</h3>
 
+<!--
 {% for i in range(length) %}
-<p>{{message}}{{solution[i]}}</p>
+<p></p>
 {% endfor %}
 
 
 {% for i in range(words) %}
     {% if i in solution %}
-        <span><mark>{{article[i]}}</mark></span>
+        <span><mark></mark></span>
     {% else %}
-        <span>{{article[i]}}</span>
+        <span></span>
     {% endif %}
 {% endfor %}
+-->
+
+<textarea rows="25" cols="100">
+    <p>{{solution}}</p>
+</textarea>
+
