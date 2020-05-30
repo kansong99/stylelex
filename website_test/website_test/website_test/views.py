@@ -5,11 +5,9 @@ Routes and views for the flask application.
 from datetime import datetime
 from flask import render_template, request, url_for, redirect
 from website_test import app
-from . import module1
-from . import module2
-from . import numb
-from . import links
-from . import find3
+from .links import *
+from .find3 import *
+from .names3 import *
 
 @app.route('/')
 @app.route('/home')
@@ -82,10 +80,13 @@ def solution():
         article = request.form["art"]
         llist = LinkedList(article) 
         if request.form["oxfords"] == "no":
-            llist.find_func(False)
-        if request.form["oxfords"] == "yes":
-            llist.find_func(True)
-        solution = llist.tolist()
+            find_func(False, llist)
+        elif request.form["oxfords"] == "yes":
+            find_func(True, llist)
+        else:
+            pass
+        names_func(True, True, True, llist)
+        solution = llist.tostring()
         length = len(solution)
     return render_template(
         'solution.html',
