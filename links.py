@@ -1,11 +1,35 @@
 import spacy
 
 nlp = spacy.load("en_core_web_md")
-text = ("He wants to buy red apples, green grapes, and yellow bananas. I like Jill, Jane, and Mary. I have 32 dollars")
+text = ("It is 25 percent of 101.")
 doc = nlp(text)
 
 #A dictionary of all the errors contained throughout all the files
-perrors = {1: " (oxford comma present or not here) ->", 2: "(spell out numbers less than or equal to 100)->" }
+perrors = {1: " (oxford comma present or not here) ->",
+2: "(spell out numbers less than or equal to 100)->",
+4: "(Measurements should be symbols)->",
+6: "(Measurements should be written out)->",
+8: "(You should use symbol %)->",
+10: "(percent should be written out)->",
+12: "Spell out numbers when they start sentence->",
+14: "Consider rephrasing sentence so it does not start with date->",
+16: "write age as numeral->",
+18: "spell out decades, e.g nineteen-sixties not '60s ->",
+20: "spell out words less than or equal to 100->",
+22: "You should use $ when money is numeral->",
+24: "Write out round numbers and use dollars instead of $->",
+26: "Write out round numbers e.g, twenty-seven thousand dollars->",
+28: "spell out numbers less than 100 and use dollars instead of $->",
+30: "Write out whole number and use dollars instead of $->",
+32: "Write out whole number->",
+34: "Use numerals to represent this number->",
+36: "Use numerals to represent this number and use $->",
+38: "use dollars in this instance->",
+40: "don't spell out number greater than 100->",
+42: "don't spell out number greater than 100 and use $ instead of dollars->",
+44: "dollars should be used instead of $ for numbers less than or equal to 100->"
+}
+
 
 class Node:
 	def __init__(self, start, end, error):
@@ -35,7 +59,6 @@ class LinkedList:
 			prev.next.next = enode
 			enode.next = current
 		else:
-			assert current.start == index
 			prev.next = enode
 			enode.next = current
 
@@ -51,6 +74,12 @@ class LinkedList:
 
 
 llist = LinkedList(len(text))
+
+def binary(bool1, key1, key2, bool2, start, end):
+	if bool1 is False and bool2 == 0:
+		llist.insert(start, key1)
+	elif bool1 is True and bool2 == 1:
+		llist.insert(start, key2)
 
 
 
