@@ -73,19 +73,25 @@ def product():
 #        message=msg
 #    )
 
+dict = {'yes': True, 'no': False}
+
 @app.route('/solution', methods = ["POST"])
 def solution():
     """Renders the solution page."""
     if request.method == "POST":
         article = request.form["art"]
         llist = LinkedList(article) 
-        if request.form["oxfords"] == "no":
-            find_func(False, llist)
-        elif request.form["oxfords"] == "yes":
-            find_func(True, llist)
-        else:
-            pass
-        names_func(True, True, True, llist)
+        #if request.form["oxfords"] == "no":
+        #    find_func(False, llist)
+        #elif request.form["oxfords"] == "yes":
+        #    find_func(True, llist)
+        #else:
+        #    pass
+        #names_func(True, True, True, llist)
+        #dict[request.form["oxfords"]]
+        names_func(dict[request.form["names1"]], dict[request.form["names2"]], dict[request.form["names3"]], llist)
+        numb_func(dict[request.form["numbers1"]], dict[request.form["numbers2"]], dict[request.form["numbers3"]],
+                  dict[request.form["numbers4"]], dict[request.form["numbers5"]], dict[request.form["numbers6"]], llist)
         solution = llist.tostring()
         length = len(solution)
     return render_template(

@@ -1,12 +1,12 @@
 import spacy
 
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("en_core_web_md")
 #text = ("He wants to buy red apples, green grapes, and yellow bananas. I like Jill, Jane, and Mary. I have 32 dollars")
 #doc = nlp(text)
 
 #A dictionary of all the errors contained throughout all the files
 perrors = {1: " (<- remove oxford comma)", 2: " (<- insert oxford comma)", 3: " (Use last name as shortened reference ->)", 
-		   5: " (<- Use full name on first reference ->)", 7: " (Potentially misspelled name ->)"  }
+		   5: " (Use full name on first reference ->)", 7: " (Potentially misspelled name ->)"  }
 
 class Node:
 	def __init__(self, start, end, error):
