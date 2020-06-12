@@ -21,26 +21,27 @@ def names_func(option1, option2, option3, llist):
             if len(full_name) >= 2: # name is not shortened (2 or more words)
                 if (full_name in names): # checks if long name has not been used prior to this
 # edit
+                    flag1 = False
                     if option2 == True:
                         #print(ent.text, "-", "Position", ent[0].i, "-", "References following first usage of person's name should be shortened")
                         llist.insert(error_index, 3)
                 else: 
                     flag1 = True 
                     for i in range(len(names)): # checks if extremely similar full names are found
-                        if (SequenceMatcher(None, full_name, names[i]).ratio() > 0.7):
+                        if (SequenceMatcher(None, full_name, names[i]).ratio() > 0.7 and SequenceMatcher(None, full_name, names[i]).ratio() < 0.99):
 # edit
                             if option3 == True:
                                 #print (full_name, "-", "Position", ent[0].i, "-", "Did you mean", "\'", names[i], "\'? Consider using only surname.")
                                 llist.insert(error_index, 3)
                             flag1 = False;
                             break
-                    if flag1: # if no other equivalent or similar names or are found
+                    if flag1 == True: # if no other equivalent or similar names or are found
                         names.append(full_name)
             else: # name is shortened (1 word)
                 flag2 = True
                 flag3 = True
                 for i in range(len(names)): # checks if shortened name has been used in full prior to this
-                    if (full_name == names[i][-1]) : # no error if last name
+                    if (full_name[0] == names[i][-1]) : # no error if last name
                         flag2 = False
                         flag3 = False
                         break
@@ -54,14 +55,14 @@ def names_func(option1, option2, option3, llist):
                         break
                 if flag2: # checks if extremely similar first and last names are found
                     for i in range(len(names)):
-                        if  (SequenceMatcher(None, full_name[0], names[i][0]).ratio() > 0.7):
+                        if  (SequenceMatcher(None, full_name[0], names[i][0]).ratio() > 0.7 and SequenceMatcher(None, full_name[0], names[i][0]).ratio() < 0.99):
 # edit
                             if option3 == True:
                                 #print (full_name, "-", "Position", ent[0].i, "-", "Did you mean", "\'", names[i][0], "\'?")
                                 llist.insert(error_index, 7)
                             flag3 = False
                             break
-                        if  (SequenceMatcher(None, full_name[0], names[i][-1]).ratio() > 0.7):
+                        if  (SequenceMatcher(None, full_name[0], names[i][-1]).ratio() > 0.7 and SequenceMatcher(None, full_name[0], names[i][-1]).ratio() < 0.99):
 # edit
                             if option3 == True:    
                                 #print (full_name, "-", "Position", ent[0].i, "-", "Did you mean", "\'", names[i][-1], "\'?")
