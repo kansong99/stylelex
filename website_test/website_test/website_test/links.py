@@ -94,11 +94,11 @@ class LinkedList:
 		return output
 
 
-def binary(bool1, key1, key2, bool2, start, end):
-	if bool1 is False and bool2 == 0:
-		llist.insert(start, key1)
-	elif bool1 is True and bool2 == 1:
-		llist.insert(start, key2)
+	def binary(bool1, key1, key2, bool2, start, end):
+		if bool1 is False and bool2 == 0:
+			insert(start, key1)
+		elif bool1 is True and bool2 == 1:
+			insert(start, key2)
 
 
 

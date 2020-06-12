@@ -1,5 +1,5 @@
 import spacy
-#from links import *
+from .links import *
 from . import links
 
 bigNums = ['hundred', 'thousand', 'million', 'billion', 'trillion']
@@ -24,16 +24,17 @@ def hasSign(text, start_char): #function to tell if dollar or $ is used
 		return True
 	return False
 
-def quantage(tag, word, start, end, quant0, quant1): # function to handle degrees or percentages
-	if tag != 'PERCENT':
-		bool1 = word[0].isnumeric() == True
-		binary(bool1, 4, 6, quant0, start, end)
-	if tag == 'PERCENT':
-		if '%' in word:
-			bool1 = True
-		else:
-			bool1 = False
-		binary(bool1, 8, 10, quant1, start, end)
+#def quantage(tag, word, start, end, quant0, quant1,): # function to handle degrees or percentages
+#	if tag != 'PERCENT':
+#		bool1 = word[0].isnumeric() == True
+#		binary(bool1, 4, 6, quant0, start, end)
+#
+#	if tag == 'PERCENT':
+#		if '%' in word:
+#			bool1 = True
+#		else:
+#			bool1 = False
+#		binary(bool1, 8, 10, quant1, start, end)
 
 def numb_func(quant0, quant1, quant3, quant4, quant5, quant6, llist):
 	#first boolean determines whether you want to express degrees or measurements as symbols (0) or written out (1)
@@ -42,7 +43,8 @@ def numb_func(quant0, quant1, quant3, quant4, quant5, quant6, llist):
 	#fourth boolean checks if you want to write age as numeral
 	#fifth boolean checks if you want to write out decades
 	#sixth boolean checks if you want numbers and money <= 100 to be symbols and > 100 witten out
-	for ent in doc.ents:
+	for ent in llist.doc.ents:
+		text = llist.text
 		first = text[ent.start_char]
 		last = text[ent.end_char - 1]
 		word = ent.text
@@ -95,7 +97,7 @@ def numb_func(quant0, quant1, quant3, quant4, quant5, quant6, llist):
 						else: #they did not use $ but did not spell out round number
 							llist.insert(startCheck, 32)
 					else:
-						if ent.label_ == 'MONEY' and hasSign(text, startCheck): #if ending indicates text should be written and they used $
+						if ent.label_ == 'MONEY' and habinsSign(text, startCheck): #if ending indicates text should be written and they used $
 							llist.insert(startCheck, 34)
 						else: #they did not use $ but did not spell out round number
 							llist.insert(startCheck, 36)
@@ -112,7 +114,23 @@ def numb_func(quant0, quant1, quant3, quant4, quant5, quant6, llist):
 					elif ent.label_ == 'MONEY' and hasSign(text, startCheck):
 						llist.insert(startCheck, 44)
 			elif ent.label_ in {'QUANTITY', 'PERCENT'}: #then you want it to be numerals and not spelled out
-				quantage(ent.label_, ent.text, ent.start_char, ent.end_char, quant0, quant1)
+#				quantage(ent.label_, ent.text, ent.start_char, ent.end_char, quant0, quant1)
+				if ent.label_ != 'PERCENT':
+					bool1 = ent.text[0].isnumeric() == True
+					if bool1 is False and quant0 == 0:
+						llist.insert(ent.start_char, 4)
+					elif bool1 is True and quant0 == 1:
+						llist.insert(ent.start_char, 6)
+				if ent.label_ == 'PERCENT':
+					if '%' in ent.text:
+						bool1 = True
+					else:
+						bool1 = False
+					if bool1 is False and quant1 == 0:
+						llist.insert(ent.start_char, 8)
+					elif bool1 is True and quant1 == 1:
+						llist.insert(ent.start_char, 10)
+					
 
 
 

@@ -8,6 +8,7 @@ from website_test import app
 from .links import *
 from .find3 import *
 from .names3 import *
+from .numb import *
 
 @app.route('/')
 @app.route('/home')
@@ -90,8 +91,7 @@ def solution():
         #names_func(True, True, True, llist)
         #dict[request.form["oxfords"]]
         names_func(dict[request.form["names1"]], dict[request.form["names2"]], dict[request.form["names3"]], llist)
-        numb_func(dict[request.form["numbers1"]], dict[request.form["numbers2"]], dict[request.form["numbers3"]],
-                  dict[request.form["numbers4"]], dict[request.form["numbers5"]], dict[request.form["numbers6"]], llist)
+        numb_func(dict[request.form["numbers1"]], dict[request.form["numbers2"]], dict[request.form["numbers3"]], dict[request.form["numbers4"]], dict[request.form["numbers5"]], dict[request.form["numbers6"]], llist)
         solution = llist.tostring()
         length = len(solution)
     return render_template(
