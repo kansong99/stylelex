@@ -59,9 +59,14 @@ def numb_func(quant0, quant1, quant3, quant4, quant5, quant6, llist):
 					llist.insert(startCheck, 12)
 				elif first.isnumeric() and ent.label_ is 'DATE':
 					llist.insert(startCheck, 14)
-			elif quant4 and (ent.label_ is 'DATE' and ('year' in word and 'old' in word)): #the assumption being this is an age
-				if text[ent.start_char].isnumeric() is False:
+			elif (ent.label_ is 'DATE' and ('year' in word and 'old' in word)): #the assumption being this is an age
+				gchar = ent.start_char
+				while text[gchar].isalnum() is False:
+					gchar += 1 
+				if text[ent.start_char].isnumeric() is False and quant4:
 					llist.insert(startCheck, 16)
+				elif text[ent.start_char].isnumeric() is True and not quant4:
+					llist.insert(startCheck, 46)
 			elif quant5 and ent.label_ is 'DATE' and (word[0] in {"\'", "1", "2"} and word[-1] == "s"): #this suggests we are working with decade
 				llist.insert(startCheck, 18)
 			elif quant6 and ent.label_ in {'MONEY', 'CARDINAL'}: #Applying the rules for money

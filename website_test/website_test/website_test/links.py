@@ -19,8 +19,9 @@ perrors = {1: "<-[Remove oxford comma]",
 8: "[You should use symbol %]->",
 10: "[Percent should be written out]->",
 12: "[Spell out numbers when they start sentence]->",
-14: "[Consider rephrasing sentence so it does not start with date]->",
+14: "[Consider rephrasing sentence so it does not start with date or age]->",
 16: "[Write age as numeral]->",
+46: "[Spell out age]->",
 18: "[Spell out decades, e.g nineteen-sixties not '60s]->",
 20: "[Spell out words less than or equal to 100]->",
 22: "[You should use $ when money is numeral]->",
@@ -50,7 +51,10 @@ class LinkedList:
 	def __init__(self, text): #meta info to know how long the initial string is for later functions
 		self.head = Node(-25, -1, 0)
 		self.head.next = Node(0, len(text), 0)
-		self.text = text
+		real = 0
+		while text[real].isspace():
+			real += 1
+		self.text = text[real:]
 		self.doc = nlp(text)
 
 
@@ -81,7 +85,7 @@ class LinkedList:
 			current = current.next
 
 
-	def tostring(self): #function to change LinkedList to list
+	def tostring(self): #function to change LinkedList to string
 		output = ""
 		current = self.head.next
 		while current:
