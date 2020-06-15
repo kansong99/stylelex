@@ -10,8 +10,6 @@ from .find3 import *
 from .names3 import *
 from .numb import *
 
-app = Flask(__name__)
-
 @app.route('/')
 @app.route('/home')
 def home():
