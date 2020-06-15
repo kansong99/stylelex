@@ -3,12 +3,14 @@ Routes and views for the flask application.
 """
 
 from datetime import datetime
-from flask import render_template, request, url_for, redirect
+from flask import render_template, request, url_for, redirect, Flask
 from website_test import app
 from .links import *
 from .find3 import *
 from .names3 import *
 from .numb import *
+
+app = Flask(__name__)
 
 @app.route('/')
 @app.route('/home')

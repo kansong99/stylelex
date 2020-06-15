@@ -6,4 +6,4 @@ from os import environ
 from website_test import app
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
