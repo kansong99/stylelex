@@ -26,7 +26,7 @@ preshed==3.0.2
 requests==2.23.0
 six==1.14.0
 srsly==1.0.2
-thinc==7.4.0
+thinc==7.4.1
 tqdm==4.46.0
 urllib3==1.25.9
 virtualenv==20.0.19
