@@ -1,6 +1,6 @@
 import spacy
 
-nlp = spacy.load("en_core_web_md")
+nlp = spacy.load("en_core_web_sm")
 
 #text = ("He wants to buy red apples, green grapes, and yellow bananas. I like Jill, Jane, and Mary. I have 32 dollars")
 #doc = nlp(text)
