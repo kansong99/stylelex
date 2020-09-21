@@ -37,7 +37,7 @@ def hasSign(text, start_char): #function to tell if dollar or $ is used
 #			bool1 = False
 #		binary(bool1, 8, 10, quant1, start, end)
 
-def numb_func(quant0, quant1, quant3, quant4, quant5, quant6, llist):
+def numb_func(llist, quant0= False, quant1 = False, quant3 = False, quant4 = False, quant5 = False, quant6 = False):
 	#first boolean determines whether you want to express degrees or measurements as symbols (0) or written out (1)
 	#second boolean determines whether you want to write out percent (1) or use the symbol (0)
 	#third boolean checks whether you want to perform checks on date formatting
