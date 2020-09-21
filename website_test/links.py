@@ -55,7 +55,7 @@ class LinkedList:
 		while text[real].isspace():
 			real += 1
 		self.text = text[real:]
-		self.doc = nlp(text)
+		self.doc = nlp(self.text)
 
 
 
