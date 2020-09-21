@@ -1,6 +1,6 @@
 import spacy
 #from links import *
-from . import links 
+#from . import links 
 
 
 def find_func(option, llist):

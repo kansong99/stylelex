@@ -1,6 +1,6 @@
 import spacy
-from .links import *
-from . import links
+from links import *
+import links
 
 bigNums = ['hundred', 'thousand', 'million', 'billion', 'trillion']
 
