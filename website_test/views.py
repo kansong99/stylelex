@@ -90,8 +90,8 @@ def solution():
         #    pass
         #names_func(True, True, True, llist)
         #dict[request.form["oxfords"]]
-        names_func(dict[request.form["names1"]], dict[request.form["names2"]], dict[request.form["names3"]], llist)
-        numb_func(dict[request.form["numbers1"]], dict[request.form["numbers2"]], dict[request.form["numbers3"]], dict[request.form["numbers4"]], dict[request.form["numbers5"]], dict[request.form["numbers6"]], llist)
+        names_func(llist, dict[request.form["names1"]], dict[request.form["names2"]], dict[request.form["names3"]])
+        numb_func(llist, dict[request.form["numbers1"]], dict[request.form["numbers2"]], dict[request.form["numbers3"]], dict[request.form["numbers4"]], dict[request.form["numbers5"]], dict[request.form["numbers6"]])
         solution = llist.tostring()
         length = len(solution)
     return render_template(
