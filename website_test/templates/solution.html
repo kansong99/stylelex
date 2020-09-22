@@ -4,12 +4,12 @@
 {% block content %}
 
 <script src="/static/scripts/jquery.highlight-within-textarea.js"></script>
-<link rel="stylesheet" type="text/css" href="/static/content/jquery.highlight-within-textarea.css" />
+<link href="/static/content/jquery.highlight-within-textarea.css" rel="stylesheet"/>
 
 <h1>Review</h1>
 <h3>Please view our suggested revisions:</h3>
 
-<textarea class="solution" rows="25" cols="100">{{solution}}</textarea>
+<textarea name="solution" rows="25" cols="100">{{solution}}</textarea>
 <script>
     $('.solution').highlightWithinTextarea({
         highlight: 'Hello'
