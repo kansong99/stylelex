@@ -73,7 +73,7 @@ def product():
 #        year=datetime.now().year,
 #        message=msg
 #    )
-
+#converts yes to True and no to False
 dict = {'yes': True, 'no': False}
 
 @app.route('/solution', methods = ["POST"])

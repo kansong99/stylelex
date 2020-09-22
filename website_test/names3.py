@@ -5,7 +5,7 @@ from . import links
 #nlp = spacy.load("en_core_web_sm")
 #doc = nlp("Aaron is a writer. Mr. Ansong is a coder. Aaron James Dang writes books and Kofi Ansong writes programs. Aarin and Mr. Anson are also entrepreneurs.")
 
-def names_func(llist, option1 = None, option2 = None, option3 = None):
+def names_func(llist, option1 = False, option2 = False, option3 = False):
 
     #option1 - Full name on first reference (error 5)
     #option2 - Consistent shortened reference (error 3)

@@ -3,17 +3,23 @@
 
 {% block content %}
 
-<script src="/static/scripts/jquery.highlight-within-textarea.js"></script>
-<link rel="stylesheet" type="text/css" href="/static/content/jquery.highlight-within-textarea.css" />
+<!-- <script src="/static/scripts/jquery.highlight-within-textarea.js"></script> -->
+<!-- <link rel="stylesheet" type="text/css" href="/static/content/jquery.highlight-within-textarea.css" /> This content was moved to layout.html we can reconsider -->
+<head>
+	
+</head>
+<body>
+	<h1>Review</h1>
+	<h3>Please view our suggested revisions:</h3>
+	<div class="container">
+		<div class="backdrop">
+			<div class="highlights">
+				<!--Cloned text here -->
+			</div>
+		</div>
 
-<h1>Review</h1>
-<h3>Please view our suggested revisions:</h3>
+	<textarea class="solution" rows="25" cols="100">{{solution}}</textarea>
+	</div>
 
-<textarea class="solution" rows="25" cols="100">{{solution}}</textarea>
-<script>
-    $('.solution').highlightWithinTextarea({
-        highlight: 'Hello'
-    });
-</script> 
-
+</body>
 {% endblock %}
