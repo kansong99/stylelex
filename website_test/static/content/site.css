@@ -2,8 +2,8 @@
 
 
 body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    /*padding-top: 50px;
+    padding-bottom: 20px; */
     margin: 30px;
     background-color: #f0f0f0;
 }
@@ -13,17 +13,48 @@ body {
     padding-left: 15px;
     padding-right: 15px;
 }
+
+.highlights, textarea {
+  padding: 10px;
+  font: 20px/28px 'Open Sans', sans-serif;
+  letter-spacing: 1px;
+} 
+
+.container {
+  display: block;
+  margin: 0 auto;
+  transform: translateZ(0);
+  -webkit-text-size-adjust: none;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
+.backdrop {
+    position: absolute;
+    z-index: 1;
+   /* border: 2px solid #685972; */
+   /* background-color: #fff; */
+    overflow: auto;
+    pointer-events: none;
+    transition: transform 1s;
+}
+
+.highlights {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: transparent;
+}
+
 textarea {
-    max-width: 280px;
-    margin: 0;
-    border-radius: 0;
-    color: #444; /* or whatever */
-    background-color: transparent;
+    display: block;
+  /*position: absolute; This line messes up the submit button*/ 
+  z-index: 2;
+  margin: 0;
+  border: 2px solid #74637f;
+  border-radius: 0;
+  color: #444;
+  background-color: transparent;
+  overflow: auto;
+  resize: none;
+  transition: transform 1s;
 }
 
 mark {
@@ -31,6 +62,22 @@ mark {
     color: transparent;
     background-color: #b1d5e5;
 }
+
+
+
+/* Set width on the form input elements since they're 100% wide by default */
+/*container,
+.backdrop */
+
+/* input,
+select,
+textarea {
+  /*  max-width: 280px; */
+  /*  margin: 0;
+   /* border-radius: 0;
+   /* color: #444; /* or whatever */
+  /*  background-color: transparent;
+} 
 
 /* styles for validation helpers */
 .field-validation-error {
@@ -65,49 +112,11 @@ input[type="checkbox"].input-validation-error {
   height: 180px;
 }
 */
-.highlights, textarea {
-  padding: 10px;
-  font: 20px/28px 'Open Sans', sans-serif;
-  letter-spacing: 1px;
-} 
 
 
-.backdrop {
-    position: absolute;
-    z-index: 1;
-    border: 2px solid #685972;
-    background-color: #fff;
-    overflow: auto;
-    pointer-events: none;
-    transition: transform 1s;
-}
-
-.highlights {
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    color: transparent;
-}
-
-.container {
-  display: block;
-  margin: 0 auto;
-  transform: translateZ(0);
-  -webkit-text-size-adjust: none;
-}
-
-textarea {
-    display: block;
-  /*position: absolute; This line messes up the submit button*/ 
-  z-index: 2;
-  margin: 0;
-  border: 2px solid #74637f;
-  border-radius: 0;
-  color: #444;
-  background-color: transparent;
-  overflow: auto;
-  resize: none;
-  transition: transform 1s;
-}
 
 
+textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #c6aada;
 
