@@ -16,7 +16,7 @@ body {
 
 .highlights, textarea {
   padding: 10px;
-  font: 20px/28px 'Open Sans', sans-serif;
+  /*font: 20px/28px 'Open Sans', sans-serif; */
   letter-spacing: 1px;
 } 
 
@@ -59,8 +59,10 @@ textarea {
 
 mark {
     border-radius: 3px;
+    border: 2px solid #685972; 
     color: transparent;
-    background-color: #b1d5e5;
+   /* background-color: #b1d5e5; */
+    background-color: transparent; 
 }
 
 
