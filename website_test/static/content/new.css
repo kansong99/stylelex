@@ -1,0 +1,113 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+/*
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    margin: 30px;
+    background-color: #f0f0f0;
+}
+*/
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+    margin: 0;
+    border-radius: 0;
+    color: #444; /* or whatever */
+    background-color: transparent;
+}
+
+mark {
+    border-radius: 3px;
+    color: transparent;
+    background-color: #b1d5e5;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+/*Styles for text area */
+
+
+/*.container, .backdrop, textarea {
+  width: 460px;
+  height: 180px;
+}
+
+.highlights, textarea {
+  padding: 10px;
+  font: 20px/28px 'Open Sans', sans-serif;
+  letter-spacing: 1px;
+} 
+*/
+
+.backdrop {
+    /*position: absolute;*/
+    z-index: 1;
+    border: 2px solid #685972;
+    background-color: #fff;
+    overflow: auto;
+    pointer-events: none;
+    transition: transform 1s;
+}
+
+.highlights {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: transparent;
+}
+
+.container {
+  display: block;
+  margin: 0 auto;
+  transform: translateZ(0);
+  -webkit-text-size-adjust: none;
+}
+
+textarea {
+    display: block;
+ /* position: absolute;*/
+  z-index: 2;
+  margin: 0;
+  border: 2px solid #74637f;
+  border-radius: 0;
+  color: #444;
+  background-color: transparent;
+  overflow: auto;
+  resize: none;
+  transition: transform 1s;
+}
+
+
+

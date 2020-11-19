@@ -7,23 +7,27 @@
 
 <form action="/solution" target="_blank" method="POST">
     <h3>Select your style preferences</h3>
+    <h5>*Options default to no</h5>
     <hr>
 
     <h4><strong>Names:</strong></h4>
 
     <p>Use full name on first reference? (e.g, John Smith and not Smith/ Mr. Smith)</p>
+    <input type="hidden" name="names1" value = "no"/>
     <input type="radio" id="yes" name="names1" value="yes">
     <label for="yes">Yes</label><br>
     <input type="radio" id="no" name="names1" value="no">
     <label for="no">No</label><br>
 
     <p>Use shortened name (surname) after first name reference? (e.g, Mr.Smith or Smith used and never John Smith again) </p>
+    <input type="hidden" name="names2" value = "no"/>
     <input type="radio" id="yes" name="names2" value="yes">
     <label for="yes">Yes</label><br>
     <input type="radio" id="no" name="names2" value="no">
     <label for="no">No</label><br>
 
     <p>Check for potentially misspelled names? (e.g, Will raise warning for Jon Smith or Mr. Smiht)</p>
+    <input type="hidden" name="names3" value = "no"/>
     <input type="radio" id="yes" name="names3" value="yes">
     <label for="yes">Yes</label><br>
     <input type="radio" id="no" name="names3" value="no">
@@ -33,44 +37,49 @@
     <h4><strong>Numbers/Symbols:</strong></h4>
 
     <p>Express degrees or measurements as numbers? (e.g, 50 degrees and not fifty degrees)</p>
+    <input type="hidden" name="numbers1" value = "no"/>
     <input type="radio" id="yes" name="numbers1" value="yes">
     <label for="yes">Yes</label><br>
     <input type="radio" id="no" name="numbers1" value="no">
     <label for="no">No</label><br>
 
     <p>Use literal "percent" (Yes) or percent sign "%" (No)?</p>
+    <input type="hidden" name="numbers2" value = "no"/>
     <input type="radio" id="yes" name="numbers2" value="yes">
     <label for="yes">Yes</label><br>
     <input type="radio" id="no" name="numbers2" value="no">
     <label for="no">No</label><br>
 
     <p>Apply check to make sure number does not start sentence?</p>
+    <input type="hidden" name="numbers3" value = "no"/>
     <input type="radio" id="yes" name="numbers3" value="yes">
     <label for="yes">Yes</label><br>
     <input type="radio" id="no" name="numbers3" value="no">
     <label for="no">No</label><br>
 
     <p>Use cardinals to express age (29) or spell out (twenty-nine)?</p>
+    <input type="hidden" name="numbers4" value = "no"/>
     <input type="radio" id="yes" name="numbers4" value="yes">
     <label for="yes">Yes</label><br>
     <input type="radio" id="no" name="numbers4" value="no">
     <label for="no">No</label><br>
 
     <p>Write out decades? (e.g, sixties and not '60s)</p>
+    <input type="hidden" name="numbers5" value = "no"/>
     <input type="radio" id="yes" name="numbers5" value="yes">
     <label for="yes">Yes</label><br>
     <input type="radio" id="no" name="numbers5" value="no">
     <label for="no">No</label><br>
 
     <p>Use symbols ("$") for numbers and money <= 100, and literals ("dollars") for > 100?</p>
+    <input type="hidden" name="numbers6" value = "no"/>
     <input type="radio" id="yes" name="numbers6" value="yes">
     <label for="yes">Yes</label><br>
     <input type="radio" id="no" name="numbers6" value="no">
     <label for="no">No</label><br />
 
     <h3>Paste your article in the submission box to test out our style guide automator!</h3>
-    <textarea rows="25" cols="100" input type="text" name="art">
-    </textarea>
+    <textarea rows="25" cols="100" input type="text" name="art"></textarea>
     <br>
     <input type="submit" value="submit">
 </form>
