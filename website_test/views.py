@@ -1,6 +1,7 @@
 """
 Routes and views for the flask application.
 """
+import json
 
 from datetime import datetime
 from flask import render_template, request, url_for, redirect, Flask
@@ -92,8 +93,9 @@ def solution():
         #dict[request.form["oxfords"]]
         names_func(dict[request.form["names1"]], dict[request.form["names2"]], dict[request.form["names3"]], llist)
         numb_func(dict[request.form["numbers1"]], dict[request.form["numbers2"]], dict[request.form["numbers3"]], dict[request.form["numbers4"]], dict[request.form["numbers5"]], dict[request.form["numbers6"]], llist)
-        solution = llist.tostring()
+        solution = llist.toarray()
+        jsolution = json.dumps(solution)
         length = len(solution)
     return render_template(
         'solution.html',
-        solution=solution)
+        solution=jsolution)
