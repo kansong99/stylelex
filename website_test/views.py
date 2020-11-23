@@ -1,6 +1,7 @@
 """
 Routes and views for the flask application.
 """
+import json
 
 from datetime import datetime
 from flask import render_template, request, url_for, redirect, Flask
@@ -81,7 +82,7 @@ def solution():
     """Renders the solution page."""
     if request.method == "POST":
         article = request.form["art"]
-        llist = LinkedList(article) 
+        llist = LinkedList(article)
         #if request.form["oxfords"] == "no":
         #    find_func(False, llist)
         #elif request.form["oxfords"] == "yes":
@@ -90,10 +91,14 @@ def solution():
         #    pass
         #names_func(True, True, True, llist)
         #dict[request.form["oxfords"]]
-        names_func(llist, dict[request.form["names1"]], dict[request.form["names2"]], dict[request.form["names3"]])
+        names_func(llist, option1 = dict[request.form["names1"]], option2 = dict[request.form["names2"]], option3 = dict[request.form["names3"]])
         numb_func(llist, dict[request.form["numbers1"]], dict[request.form["numbers2"]], dict[request.form["numbers3"]], dict[request.form["numbers4"]], dict[request.form["numbers5"]], dict[request.form["numbers6"]])
         solution = llist.tostring()
+        jsolution = llist.toarray()
         length = len(solution)
+        check = json.dumps(jsolution)
+        print(check)
     return render_template(
         'solution.html',
+        parsed=jsolution,
         solution=solution)

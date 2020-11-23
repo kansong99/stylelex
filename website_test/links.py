@@ -83,6 +83,25 @@ class LinkedList:
 			else:
 				print(perrors[current.error], end = "")
 			current = current.next
+		return None
+
+	#function to change linkedList to array for JSON formatting
+	#returns array [n_0, x_0, n_1, x_1,,,,,, , n_1, x_n] where n is either 0 or 1 and x
+	#is a string. If the n_i is a 1, then x_i is normal text. If it is a 0,
+	#then x_i is an error for x_{i-1.]
+	def toarray(self):
+		current = self.head.next
+		array = []
+		while current is not None:
+			if current. error == 0:
+				array.extend((1, self.text[current.start: current.end]))
+			else:
+				array.extend((0, perrors[current.error]))
+			current = current.next
+		return array
+
+
+
 
 
 	def tostring(self): #function to change LinkedList to string
@@ -98,11 +117,11 @@ class LinkedList:
 		return output
 
 
-	def binary(bool1, key1, key2, bool2, start, end):
+	def binary(self, bool1, key1, key2, bool2, start, end):
 		if bool1 is False and bool2 == 0:
-			insert(start, key1)
+			self.insert(start, key1)
 		elif bool1 is True and bool2 == 1:
-			insert(start, key2)
+			self.insert(start, key2)
 
 
 

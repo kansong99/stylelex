@@ -103,7 +103,7 @@ def numb_func(llist, quant0= False, quant1 = False, quant3 = False, quant4 = Fal
 						else: #they did not use $ but did not spell out round number
 							llist.insert(startCheck, 32)
 					else:
-						if ent.label_ == 'MONEY' and habinsSign(text, startCheck): #if ending indicates text should be written and they used $
+						if ent.label_ == 'MONEY' and hasSign(text, startCheck): #if ending indicates text should be written and they used $
 							llist.insert(startCheck, 34)
 						else: #they did not use $ but did not spell out round number
 							llist.insert(startCheck, 36)
