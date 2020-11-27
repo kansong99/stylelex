@@ -26,9 +26,7 @@
 		var $backdrop = $('.backdrop');
 		var $highlights = $('.highlights');
 		var $textarea = $('textarea');
-		var see = {{parsed|tojson}};
-		var txt = JSON.parse(JSON.stringify(see));
-		//browser sniffing
+		
 		var ua = window.navigator.userAgent.toLowerCase();
 		var isIE = !!ua.match(/msie|trident\/7|edge/);
 		var isWinPhone = ua.indexOf('windows phone') !== -1;

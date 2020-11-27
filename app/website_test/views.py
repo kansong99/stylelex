@@ -10,7 +10,8 @@ from .links import *
 from .find3 import *
 from .names3 import *
 from .numb import *
-
+#converts yes to True and no to False
+dict = {'yes': True, 'no': False}
 @app.route('/')
 @app.route('/home')
 def home():
@@ -41,9 +42,22 @@ def about():
         message='Your application description page.'
     )
 
-@app.route('/product')
+@app.route('/product', methods=["GET", "POST"])
 def product():
     """Renders the product page."""
+    if request.method == "POST":
+        article = request.form["art"]
+        llist = LinkedList(article)
+        names_func(llist, dict[request.form["names1"]], dict[request.form["names2"]], dict[request.form["names3"]])
+        numb_func(llist, dict[request.form["numbers1"]], dict[request.form["numbers2"]], dict[request.form["numbers3"]], dict[request.form["numbers4"]], dict[request.form["numbers5"]], dict[request.form["numbers6"]])
+        jsolution = llist.toarray()
+        #check = json.dumps(jsolution)
+        return render_template(
+            'solution.html',
+            solution = article,
+            jsolution = jsolution
+        )
+        #return redirect(url_for('solution', text=text))
     return render_template(
         'product.html',
          title='about',
@@ -75,30 +89,21 @@ def product():
 #        message=msg
 #    )
 #converts yes to True and no to False
-dict = {'yes': True, 'no': False}
 
-@app.route('/solution', methods = ["POST"])
-def solution():
+#@app.route('/solution', methods = ["POST"])
+@app.route('/solution/<string:text>')
+def solution(text):
     """Renders the solution page."""
-    if request.method == "POST":
-        article = request.form["art"]
-        llist = LinkedList(article)
-        #if request.form["oxfords"] == "no":
-        #    find_func(False, llist)
-        #elif request.form["oxfords"] == "yes":
-        #    find_func(True, llist)
-        #else:
-        #    pass
-        #names_func(True, True, True, llist)
-        #dict[request.form["oxfords"]]
-        names_func(llist, option1 = dict[request.form["names1"]], option2 = dict[request.form["names2"]], option3 = dict[request.form["names3"]])
-        numb_func(llist, dict[request.form["numbers1"]], dict[request.form["numbers2"]], dict[request.form["numbers3"]], dict[request.form["numbers4"]], dict[request.form["numbers5"]], dict[request.form["numbers6"]])
-        solution = llist.tostring()
-        jsolution = llist.toarray()
-        length = len(solution)
-        check = json.dumps(jsolution)
-        print(check)
-    return render_template(
-        'solution.html',
-        parsed=jsolution,
-        solution=solution)
+    return f'{text}'
+
+    #if request.method == "POST":
+       # article = request.form["art"]
+       # llist = LinkedList(article)
+       
+       # names_func(llist, option1 = dict[request.form["names1"]], option2 = dict[request.form["names2"]], option3 = dict[request.form["names3"]])
+       # numb_func(llist, dict[request.form["numbers1"]], dict[request.form["numbers2"]], dict[request.form["numbers3"]], dict[request.form["numbers4"]], dict[request.form["numbers5"]], dict[request.form["numbers6"]])
+       # solution = llist.tostring()
+       # jsolution = llist.toarray()
+       # check = json.dumps(jsolution)
+    #return render_template(
+    #    'solution.html')
