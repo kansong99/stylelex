@@ -16,10 +16,12 @@ dict = {'yes': True, 'no': False}
 @app.route('/home')
 def home():
     """Renders the home page."""
+    url = url_for('static', filename='App.js')
     return render_template(
         'index.html',
         title='Home Page',
         year=datetime.now().year,
+        bundle = url
     )
 
 @app.route('/contact')
