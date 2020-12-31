@@ -28,5 +28,9 @@
     "reactify": "^1.1.1",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
+  },
+  "dependencies": {
+    "bootstrap": "^4.5.3",
+    "react": "^17.0.1"
   }
 }

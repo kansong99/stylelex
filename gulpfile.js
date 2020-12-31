@@ -23,7 +23,6 @@ gulp.task('transform', function(done) {
 gulp.task('js', gulp.series('transform', function(done) {
     // Assumes a file has been transformed from
     // ./app/src/main.jsx to ./app/dist/main.js
-    console.log("mee")
     return browserify('website_test/static/scripts/dist/main.js')
     	.bundle()
         .pipe(source('main.js'))
