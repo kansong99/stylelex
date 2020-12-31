@@ -5,5 +5,4 @@ __pycache__/
 bin/
 app/
 lib/
-node_modules/
 project/
