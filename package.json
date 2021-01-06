@@ -30,7 +30,11 @@
     "vinyl-source-stream": "^2.0.0"
   },
   "dependencies": {
+    "@babel/core": "^7.12.10",
     "bootstrap": "^4.5.3",
-    "react": "^17.0.1"
+    "jquery": "^3.5.1",
+    "react": "^17.0.1",
+    "react-highlight-within-textarea": "^0.9.12",
+    "react-highlight-words": "^0.16.0"
   }
 }
