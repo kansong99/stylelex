@@ -12,6 +12,7 @@
 <body>
 	<h1>Review</h1>
 	<h3>Please view our suggested revisions:</h3>
+	<div id="main"></div>
 	<div class="container">
 		<div class="backdrop">
 			<div class="highlights">
@@ -19,15 +20,18 @@
 			</div>
 		</div>
 
-	<textarea class="solution" rows="25" cols="100">{{solution}}</textarea>
+	<textarea class="solution" rows="25" cols="100">{{parsed}}</textarea>
 	</div>
+	  <script src="{{ url_for('static', filename='node_modules/react/umd/react.production.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='node_modules/react-dom/umd/react-dom.production.min.js') }}"></script>
+     <script src="{{ url_for('static', filename='scripts/js/main.js') }}"></script>
 	<script>
 		var $container = $('.container');
 		var $backdrop = $('.backdrop');
 		var $highlights = $('.highlights');
 		var $textarea = $('textarea');
-		var see = {{parsed|tojson}};
-		var txt = JSON.parse(JSON.stringify(see));
+		window.obj = {{parsed|tojson}};
+		var txt = JSON.parse(JSON.stringify(window.obj));
 		//browser sniffing
 		var ua = window.navigator.userAgent.toLowerCase();
 		var isIE = !!ua.match(/msie|trident\/7|edge/);

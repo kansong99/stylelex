@@ -1,3 +1,7 @@
 "use strict";
 
-ReactDOM.render( /*#__PURE__*/React.createElement("h1", null, "Hello, world!"), document.getElementById('main'));
+//ReactDOM.render(
+//  <h1>This is, {window.obj}</h1>,
+//  document.getElementById('main')
+//);
+ReactDOM.render(console.log(window.obj), document.getElementById('main'));

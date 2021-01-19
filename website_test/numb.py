@@ -1,7 +1,7 @@
 import spacy
 #from links import *
-from . import links
-#import links
+from . import links #use this line when done testing
+#import links # comment out this line when done testing
 
 bigNums = ['hundred', 'thousand', 'million', 'billion', 'trillion']
 
@@ -70,6 +70,8 @@ def numb_func(llist, quant0= False, quant1 = False, quant3 = False, quant4 = Fal
 					llist.insert(startCheck, 46)
 			elif quant5 and ent.label_ is 'DATE' and (word[0] in {"\'", "1", "2"} and word[-1] == "s"): #this suggests we are working with decade
 				llist.insert(startCheck, 18)
+			elif not quant5 and ent.label is 'DATE' and (word[0] not in {"\'", "1", "2"}):
+				llist.insert(startCheck, 50)
 			elif quant6 and ent.label_ in {'MONEY', 'CARDINAL'}: #Applying the rules for money
 				if "dollars" in ent.text: #I had to account for this due to negligence, effectively removing dollars
 					if ent.text[len(ent.text) - 8] == ' ':
@@ -91,6 +93,10 @@ def numb_func(llist, quant0= False, quant1 = False, quant3 = False, quant4 = Fal
 							llist.insert(startCheck, 24)
 						else: #they did not use $ but did not spell out round number
 							llist.insert(startCheck, 26)
+					elif len(word) > 2 and world[len(word) - 1:] in {'1', '2', '3', '4', '5', '6', '7', '8', '9'}: #in this case, the word should use numberals:
+						if ent.label_ == 'MONEY' and 'dollars' not in ent.text:
+							llist.insert(startCheck, )
+
 					elif int(word) < 100:
 						if ent.label_ == 'MONEY' and hasSign(text, startCheck):
 							llist.insert(startCheck, 28)

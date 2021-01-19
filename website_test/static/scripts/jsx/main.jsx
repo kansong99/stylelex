@@ -1,4 +1,10 @@
+//ReactDOM.render(
+//  <h1>This is, {window.obj}</h1>,
+//  document.getElementById('main')
+//);
+
+
 ReactDOM.render(
-  <h1>Hello, world!</h1>,
+  console.log(window.obj),
   document.getElementById('main')
 );
