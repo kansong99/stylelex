@@ -7,9 +7,14 @@
 <!-- <script src="/static/scripts/jquery.highlight-within-textarea.js"></script> -->
 <!-- <link rel="stylesheet" type="text/css" href="/static/content/jquery.highlight-within-textarea.css" /> This content was moved to layout.html we can reconsider -->
 <head>
-	
+	<script>
+    	function myFunction() {
+			var soln = '{{solution}}'
+      		document.getElementById("myText").innerHTML = soln;
+    	}
+  	</script>
 </head>
-<body>
+<body onload="myFunction()">
 	<h1>Review</h1>
 	<h3>Please view our suggested revisions:</h3>
 	<div class="container">
@@ -20,6 +25,10 @@
 		</div>
 
 	<textarea class="solution" rows="25" cols="100">{{solution}}</textarea>
+
+
+  	<p>"The solution is" <span id="myText"></span></p>
+
 	</div>
 	<script>
 		var $container = $('.container');
