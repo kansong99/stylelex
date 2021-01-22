@@ -1,5 +1,15 @@
 import createClass from 'create-react-class';
 
+class Sect extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {errors: perrors};
+  }
+  render () {
+    return <output contentEditable = 'true'>Test</output>
+  }
+}
+
 class TextBox extends React.Component {
   constructor(props) {
     super(props);
@@ -9,9 +19,10 @@ class TextBox extends React.Component {
     const final = [];
     
     for ( var element of this.state.value) {
-      final.push(<div>{element}</div> )
-    } 
-    return <label> <textarea>{final}</textarea></label>
+      final.push(<Sect contentEditable='true'>{element}</Sect>)
+    }
+    console.log(final) 
+    return <div contentEditable='true'>{final}</div>
   }
 }
 

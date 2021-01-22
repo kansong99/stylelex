@@ -3720,22 +3720,51 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var TextBox = /*#__PURE__*/function (_React$Component) {
-  _inherits(TextBox, _React$Component);
+var Sect = /*#__PURE__*/function (_React$Component) {
+  _inherits(Sect, _React$Component);
 
-  var _super = _createSuper(TextBox);
+  var _super = _createSuper(Sect);
 
-  function TextBox(props) {
+  function Sect(props) {
     var _this;
 
-    _classCallCheck(this, TextBox);
+    _classCallCheck(this, Sect);
 
     _this = _super.call(this, props);
     _this.state = {
+      erros: perrors
+    };
+    return _this;
+  }
+
+  _createClass(Sect, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/React.createElement("output", {
+        contentEditable: "true"
+      }, "Test");
+    }
+  }]);
+
+  return Sect;
+}(React.Component);
+
+var TextBox = /*#__PURE__*/function (_React$Component2) {
+  _inherits(TextBox, _React$Component2);
+
+  var _super2 = _createSuper(TextBox);
+
+  function TextBox(props) {
+    var _this2;
+
+    _classCallCheck(this, TextBox);
+
+    _this2 = _super2.call(this, props);
+    _this2.state = {
       value: soln,
       errors: perrors
     };
-    return _this;
+    return _this2;
   }
 
   _createClass(TextBox, [{
@@ -3750,7 +3779,9 @@ var TextBox = /*#__PURE__*/function (_React$Component) {
         for (_iterator.s(); !(_step = _iterator.n()).done;) {
           var element = _step.value;
 
-          _final.push( /*#__PURE__*/React.createElement("p", null, element));
+          _final.push( /*#__PURE__*/React.createElement(Sect, {
+            contentEditable: "true"
+          }, element));
         }
       } catch (err) {
         _iterator.e(err);
@@ -3758,7 +3789,10 @@ var TextBox = /*#__PURE__*/function (_React$Component) {
         _iterator.f();
       }
 
-      return /*#__PURE__*/React.createElement("label", null, " ", /*#__PURE__*/React.createElement("textarea", null, _final));
+      console.log(_final);
+      return /*#__PURE__*/React.createElement("div", {
+        contentEditable: "true"
+      }, _final);
     }
   }]);
 
