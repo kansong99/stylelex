@@ -1,21 +1,18 @@
-//ReactDOM.render(
-//  <h1>This is, {window.obj}</h1>,
-//  document.getElementById('main')
-//);
-
-/*
-ReactDOM.render(
-  <p>{solution}</p>,
-  document.getElementById('main')
-);
-*/
-
 import createClass from 'create-react-class';
 
-var Hello = createClass({
-  render: function() {
-      return <div>Hello, { soln }!</div>;
+class TextBox extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {value: soln, errors: perrors};
   }
-});
+  render () {
+    const final = [];
+    
+    for ( var element of this.state.value) {
+      final.push(<div>{element}</div> )
+    } 
+    return <label> <textarea>{final}</textarea></label>
+  }
+}
 
-ReactDOM.render(<Hello />, document.getElementById('main'));
+ReactDOM.render(<TextBox />, document.getElementById('main'));

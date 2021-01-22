@@ -101,4 +101,5 @@ def solution():
     return render_template(
         'solution.html',
         parsed=jsolution,
-        solution=solution)
+        solution=solution,
+        perrors=perrors)

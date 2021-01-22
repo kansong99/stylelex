@@ -9,6 +9,7 @@
 <head>
 	<script>
 		var soln = {{parsed|tojson}}
+		var perrors = {{perrors|tojson}}
 		/*
     	function myFunction() {
       		document.getElementById("myText").innerHTML = soln;
@@ -27,14 +28,15 @@
 			</div>
 		</div>
 
-	<textarea class="solution" rows="25" cols="100">{{parsed}}</textarea>
+	<!-- <textarea class="solution" rows="25" cols="100">{{parsed}}</textarea> -->
 
-	<p>"The solution is" <span id="myText"></span></p>
+	<!-- <p>"The solution is" <span id="myText"></span></p> -->
 
 	</div>
 	  <script src="{{ url_for('static', filename='node_modules/react/umd/react.production.min.js') }}"></script>
     <script src="{{ url_for('static', filename='node_modules/react-dom/umd/react-dom.production.min.js') }}"></script>
      <script src="{{ url_for('static', filename='scripts/js/main.js') }}"></script>
+    <!--
 	<script>
 		var $container = $('.container');
 		var $backdrop = $('.backdrop');
@@ -97,7 +99,7 @@
 
   		bindEvents();
 		handleInput();
-	</script>
+	</script> -->
 
 
 </body>
