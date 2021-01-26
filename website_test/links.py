@@ -94,11 +94,12 @@ class LinkedList:
 		current = self.head.next
 		array = []
 		while current is not None:
-			if current. error == 0:
-				array.extend((1, self.text[current.start: current.end]))
+			if current.error == 0:
+				array.append( self.text[current.start: current.end])
 			else:
-				array.extend((0, perrors[current.error]))
+				array.append(current.error)
 			current = current.next
+		array.append(-1)
 		return array
 
 

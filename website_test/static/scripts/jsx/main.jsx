@@ -1,29 +1,37 @@
-import createClass from 'create-react-class';
+import React, { useState } from 'react';
 
-class Sect extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {errors: perrors};
+
+function Sect(props) {
+  return (
+    <output>{props.chunk}</output>
+  )
+} 
+
+function TextBox() {
+  const [isShown, setIsShown] = useState(false);
+  const final = [];
+  for (const element of soln) {
+    final.push(<Sect contentEditable='true' chunk={element}></Sect>)
   }
-  render () {
-    return <output contentEditable = 'true'>Test</output>
-  }
+
+  return(<div contentEditable = 'true' >{true && final}</div>)
 }
-
-class TextBox extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {value: soln, errors: perrors};
-  }
-  render () {
-    const final = [];
+// class TextBox extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {value: soln, errors: perrors, isShown: false, setisShown: false};
+//   }
+//   render () {
+//     const final = [];
     
-    for ( var element of this.state.value) {
-      final.push(<Sect contentEditable='true'>{element}</Sect>)
-    }
-    console.log(final) 
-    return <div contentEditable='true'>{final}</div>
-  }
-}
+//     for ( const element of this.state.value) {
+//       final.push(<Sect contentEditable='true' chunk={element}></Sect>)
+//     }
+//     console.log(final)
+//     return <div contentEditable='true'
+//     onMouseEnter={() => setIsShown(true)}
+//         onMouseLeave={() => setIsShown(false)}>{final}</div>
+//   }
+// }
 
-ReactDOM.render(<TextBox />, document.getElementById('main'));
+ReactDOM.render(<TextBox></TextBox>, document.getElementById('main'));
