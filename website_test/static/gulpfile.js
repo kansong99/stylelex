@@ -12,22 +12,22 @@ var buffer = require('vinyl-buffer');
 
 // tasks
 gulp.task('transform', function(done) {
-    return gulp.src('website_test/static/scripts/jsx/*.jsx')
+    return gulp.src('scripts/jsx/*.jsx')
         .pipe(babel({
             presets: ["@babel/react", "@babel/env"]
         }))
-        .pipe(gulp.dest('website_test/static/scripts/dist'));
+        .pipe(gulp.dest('scripts/dist'));
         done();
 });
 
 gulp.task('js', gulp.series('transform', function(done) {
     // Assumes a file has been transformed from
     // ./app/src/main.jsx to ./app/dist/main.js
-    return browserify('website_test/static/scripts/dist/main.js')
+    return browserify('scripts/dist/main.js')
     	.bundle()
         .pipe(source('main.js'))
         .pipe(buffer())
-        .pipe(gulp.dest('website_test/static/scripts/js/'));
+        .pipe(gulp.dest('scripts/js/'));
      done();
 }));
 

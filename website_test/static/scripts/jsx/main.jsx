@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+//import React, { useState } from 'react';
 
 
 function Sect(props) {
@@ -8,14 +8,18 @@ function Sect(props) {
 } 
 
 function TextBox() {
-  const [isShown, setIsShown] = useState(false);
+  const [shown, setShown] = useState(false);
   const final = [];
   for (const element of soln) {
     final.push(<Sect contentEditable='true' chunk={element}></Sect>)
   }
 
-  return(<div contentEditable = 'true' >{true && final}</div>)
+  return(<div onMouseEnter={() => setShown(true)}
+           onMouseLeave={() => setShown(false)} contentEditable = 'true' >{shown && final}</div>)
 }
+
+
+ReactDOM.render(<TextBox></TextBox>, document.getElementById('main'));
 // class TextBox extends React.Component {
 //   constructor(props) {
 //     super(props);
@@ -33,5 +37,3 @@ function TextBox() {
 //         onMouseLeave={() => setIsShown(false)}>{final}</div>
 //   }
 // }
-
-ReactDOM.render(<TextBox></TextBox>, document.getElementById('main'));
