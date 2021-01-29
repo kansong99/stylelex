@@ -6,3 +6,6 @@ bin/
 app/
 lib/
 project/
+website_test/static/node_modules/
+website_test/static/package.json
+website_test/static/package-lock.json

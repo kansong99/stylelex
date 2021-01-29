@@ -29,44 +29,53 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 //import React, { useState } from 'react';
-function Sect(props) {
-  return /*#__PURE__*/React.createElement("output", null, props.chunk);
-}
-/*
-function TextBox() {
-  const [shown, setShown] = useState(false);
-  const final = [];
-  for (const element of soln) {
-    final.push(<Sect contentEditable='true' chunk={element}></Sect>)
-  }
 
-  return(<div onMouseEnter={() => setShown(true)}
-           onMouseLeave={() => setShown(false)} contentEditable = 'true' >{shown && final}</div>)
+/*
+function Sect(props) {
+  return (
+    <output>{props.chunk}</output>
+  )
 }
 */
+var Text = /*#__PURE__*/function (_React$Component) {
+  _inherits(Text, _React$Component);
 
+  var _super = _createSuper(Text);
 
-var TextBox = /*#__PURE__*/function (_React$Component) {
-  _inherits(TextBox, _React$Component);
+  function Text() {
+    _classCallCheck(this, Text);
 
-  var _super = _createSuper(TextBox);
+    return _super.apply(this, arguments);
+  }
 
-  function TextBox(props) {
+  _createClass(Text, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/React.createElement("output", null, this.props.chunk);
+    }
+  }]);
+
+  return Text;
+}(React.Component);
+
+var Error = /*#__PURE__*/function (_React$Component2) {
+  _inherits(Error, _React$Component2);
+
+  var _super2 = _createSuper(Error);
+
+  function Error(props) {
     var _this;
 
-    _classCallCheck(this, TextBox);
+    _classCallCheck(this, Error);
 
-    _this = _super.call(this, props);
+    _this = _super2.call(this, props);
     _this.state = {
       isShown: false
-    }; // This binding is necessary to make `this` work in the callback
-    // this.hoverOff = this.hoverOff.bind(this);
-    // this.hoverOn = this.hoverOn.bind(this);
-
+    };
     return _this;
   }
 
-  _createClass(TextBox, [{
+  _createClass(Error, [{
     key: "hoverOn",
     value: function hoverOn() {
       this.setState(function (state) {
@@ -87,6 +96,62 @@ var TextBox = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      //return <output>{this.props.chunk}</output>
+      return /*#__PURE__*/React.createElement("div", {
+        /*onMouseEnter={this.hoverOn.bind(this)}
+        onMouseLeave={this.hoverOff.bind(this)}*/
+        contentEditable: "true"
+      }, this.props.chunk);
+    }
+  }]);
+
+  return Error;
+}(React.Component);
+/*
+function TextBox() {
+  const [shown, setShown] = useState(false);
+  const final = [];
+  for (const element of soln) {
+    final.push(<Sect contentEditable='true' chunk={element}></Sect>)
+  }
+
+  return(<div onMouseEnter={() => setShown(true)}
+           onMouseLeave={() => setShown(false)} contentEditable = 'true' >{shown && final}</div>)
+}
+*/
+
+
+var TextBox = /*#__PURE__*/function (_React$Component3) {
+  _inherits(TextBox, _React$Component3);
+
+  var _super3 = _createSuper(TextBox);
+
+  function TextBox() {
+    _classCallCheck(this, TextBox);
+
+    return _super3.apply(this, arguments);
+  }
+
+  _createClass(TextBox, [{
+    key: "render",
+    // constructor(props) {
+    //  super(props);
+    //  this.state = {isShown: false};
+    // This binding is necessary to make `this` work in the callback
+    // this.hoverOff = this.hoverOff.bind(this);
+    // this.hoverOn = this.hoverOn.bind(this);
+    // }
+    // hoverOn() {
+    //   this.setState(state => ({
+    //     isShown: true
+    //   }));
+    // }
+    // hoverOff() {
+    //   this.setState(state => ({
+    //     isShown: false
+    //   }));
+    // }
+    value: function render() {
       /*
       return (
         <button onClick={this.handleClick}>
@@ -103,11 +168,22 @@ var TextBox = /*#__PURE__*/function (_React$Component) {
         for (_iterator.s(); !(_step = _iterator.n()).done;) {
           var element = _step.value;
 
-          _final.push( /*#__PURE__*/React.createElement(Sect, {
-            contentEditable: "true",
-            chunk: element
-          }));
-        }
+          if (typeof element == "number" && element != -1) {
+            _final.push( /*#__PURE__*/React.createElement(Error, {
+              contentEditable: "true",
+              chunk: element
+            }));
+          }
+
+          if (typeof element == "string") {
+            _final.push( /*#__PURE__*/React.createElement(Text, {
+              contentEditable: "true",
+              chunk: element
+            }));
+          }
+        } // return(<div onMouseEnter={this.hoverOn.bind(this)}
+        // onMouseLeave={this.hoverOff.bind(this)} contentEditable = 'true' >{this.state.isShown && final}</div>)
+
       } catch (err) {
         _iterator.e(err);
       } finally {
@@ -115,10 +191,8 @@ var TextBox = /*#__PURE__*/function (_React$Component) {
       }
 
       return /*#__PURE__*/React.createElement("div", {
-        onMouseEnter: this.hoverOn.bind(this),
-        onMouseLeave: this.hoverOff.bind(this),
         contentEditable: "true"
-      }, this.state.isShown && _final);
+      }, _final);
     }
   }]);
 
