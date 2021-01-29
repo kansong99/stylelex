@@ -26,8 +26,8 @@ class TextBox extends React.Component {
     this.state = {isShown: false};
 
     // This binding is necessary to make `this` work in the callback
-    this.hoverOff = this.hoverOff.bind(this);
-    this.hoverOn = this.hoverOn.bind(this);
+    // this.hoverOff = this.hoverOff.bind(this);
+    // this.hoverOn = this.hoverOn.bind(this);
   }
 
   hoverOn() {
@@ -57,8 +57,8 @@ class TextBox extends React.Component {
     final.push(<Sect contentEditable='true' chunk={element}></Sect>)
   }
 
-  return(<div onMouseEnter={() => hoverOn()}
-    onMouseLeave={() => hoverOff()} contentEditable = 'true' >{this.state.isShown && final}</div>)
+  return(<div onMouseEnter={this.hoverOn.bind(this)}
+  onMouseLeave={this.hoverOff.bind(this)} contentEditable = 'true' >{this.state.isShown && final}</div>)
   }
 }
   
